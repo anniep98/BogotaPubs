@@ -1,0 +1,773 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css"
+        href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link href="css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="js/bootstrap.min.js"></script>
+    <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
+
+    <!------ Include the above in your HEAD tag ---------->
+    <title>AdminPage</title>
+    <script type="text/javascript">
+
+        function mostrar() {
+            $('#menu1').show();
+            
+
+        }
+          function mostrar2() {
+            $('#menu2').show();
+
+        }
+        function mostrar3() {
+            $('#menu3').show();
+
+        }
+        function mostrar4() {
+            $('#menu4').show();
+
+        }
+        function ocultar() {
+            $('#menu1').hide();
+
+        }
+        function ocultar2() {
+            $('#menu2').hide();
+
+        }
+        function ocultar3() {
+            $('#menu3').hide();
+
+        }
+        function ocultar4() {
+            $('#menu4').hide();
+
+        }
+        jQuery(document).ready(function () {
+            jQuery("#open-menu").click(function () {
+                if (jQuery('#page-container').hasClass('show-menu')) {
+                    jQuery("#page-container").removeClass('show-menu');
+                }
+
+                else {
+                    jQuery("#page-container").addClass('show-menu');
+                }
+            });
+
+            function mostrar() {
+                $('#menu').show();
+
+            }
+        });
+
+    </script>
+</head>
+<style type="text/css">
+    .navbar.bg-light {
+        background-color: #000 !important;
+        transition: ease 0.5s;
+    }
+
+    .user-profile {
+        width: 50px;
+        height: 50px;
+        background-color: #f1f1f1;
+    }
+
+    .navbar .menu-bar {
+        display: inline-block;
+        width: 50px;
+        height: 50px;
+        margin-right: 10px;
+        position: relative;
+        cursor: pointer;
+    }
+
+    .navbar .menu-bar .bars {
+        position: relative;
+        top: 50%;
+        width: 30px;
+        height: 2px;
+        background-color: #fff;
+    }
+
+    .navbar .menu-bar .bars::after {
+        content: "";
+        position: absolute;
+        bottom: -8px;
+        width: 100%;
+        height: 2px;
+        background-color: #fff;
+    }
+
+    .navbar .menu-bar .bars::before {
+        content: "";
+        position: absolute;
+        top: -8px;
+        width: 100%;
+        height: 2px;
+        background-color: #fff;
+    }
+
+    .navbar ul.navbar-nav li.nav-item.ets-right-0 .dropdown-menu {
+        left: auto;
+        right: 0;
+        position: absolute;
+    }
+
+    .side-bar {
+        position: fixed;
+        top: 81px;
+        left: 0;
+        padding: 15px;
+        display: inline-block;
+        width: 100px;
+        background-color: #fff;
+        box-shadow: 0px 0px 8px #ccc;
+        height: 100vh;
+        transition: ease 0.5s;
+        overflow-y: auto;
+    }
+
+    .main-body-content {
+        display: inline-block;
+        padding: 15px;
+        background-color: #eef4fb;
+        height: 100vh;
+        padding-left: 100px;
+        transition: ease 0.5s;
+    }
+
+    .ets-pt {
+        padding-top: 100px;
+    }
+
+    .main-admin.show-menu .side-bar {
+        width: 250px;
+    }
+
+    .main-admin.show-menu .main-body-content {
+        padding-left: 265px;
+    }
+
+    .main-admin.show-menu .navbar .menu-bar .bars {
+        width: 15px;
+    }
+
+    .main-admin.show-menu .navbar .menu-bar .bars::after {
+        width: 10px;
+    }
+
+    .main-admin.show-menu .navbar .menu-bar .bars::before {
+        width: 25px;
+    }
+
+    .main-admin.show-menu .side-bar-links {
+        opacity: 1;
+    }
+
+    .main-admin.show-menu .side-bar .side-bar-icons {
+        opacity: 0;
+    }
+
+    /**** end effacts ****/
+    .side-bar .side-bar-links {
+        opacity: 0;
+        transition: ease 0.5s;
+    }
+
+    .side-bar .side-bar-links ul.navbar-nav li a {
+        font-size: 14px;
+        color: #000;
+        font-weight: 500;
+        padding: 10px;
+    }
+
+    .side-bar .side-bar-links ul.navbar-nav li a i {
+        font-size: 20px;
+        color: #8ac1f6;
+    }
+
+    .side-bar .side-bar-links ul.navbar-nav li a:hover,
+    .side-bar-links ul.navbar-nav li a:focus {
+        text-decoration: none;
+        background-color: #8ac1f6;
+        color: #fff;
+    }
+
+    .side-bar .side-bar-links ul.navbar-nav li a:hover i {
+        color: #fff;
+    }
+
+    .side-bar .side-bar-logo img {
+        width: 100px;
+        height: 100px;
+    }
+
+    .side-bar .side-bar-icons {
+        position: absolute;
+        top: 20px;
+        right: 0;
+        width: 100px;
+        opacity: 1;
+        transition: ease 0.5s;
+    }
+
+    .side-bar .side-bar-icons .side-bar-logo img {
+        width: 50px;
+        height: 50px;
+        object-fit: cover;
+    }
+
+    .side-bar .side-bar-icons .side-bar-logo h5 {
+        font-size: 14px;
+    }
+
+    .side-bar .side-bar-icons .set-width {
+        color: #000;
+        font-size: 32px;
+    }
+
+    .side-bar .side-bar-icons .set-width:hover,
+    .side-bar .side-bar-icons .set-width:focus {
+        color: #8ac1f6;
+        text-decoration: none;
+    }
+
+    .tabla {
+        width: 50%;
+        height: 50%;
+        border: 1cm;
+        border-color: black;
+    }
+</style>
+
+<body>
+    <div id="page-container" class="main-admin">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light position-fixed w-100">
+            <a class="navbar-brand" href="#"></a>
+            <div id="open-menu" class="menu-bar">
+                <div class="bars"></div>
+            </div>
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item dropdown ets-right-0">
+                    <div class="media-body ml-2 d-none d-lg-block">
+                        <span class="mb-0 text-sm  font-weight-bold">ADMINISTRADOR</span>
+                    </div>
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+
+                        <img src="FOTOS/jefe.png" class="img-fluid rounded-circle border user-profile">
+                    </a>
+
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">Perfil</a>
+                        <a class="dropdown-item" href="#">configuracion</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Cerrar Sesion</a>
+
+                    </div>
+                </li>
+            </ul>
+        </nav>
+
+                <br><br>
+                <br>
+                <br>
+                <br>
+                <br>
+               
+                
+                <ul >
+                    <li class="nav-item">
+                        <a href="#" onclick="mostrar();" class="nav-links d-block"><i class="fa fa-home pr-2"></i>
+                            Usuarios</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" onclick="mostrar2();" class="nav-links d-block"><i class="fa fa-home pr-2"></i>
+                            Productos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" onclick="mostrar3();" class="nav-links d-block"><i class="fa fa-home pr-2"></i> insumos</a>
+                    </li>
+                   
+                    <li class="nav-item">
+                        <a href="#" onclick="mostrar4();" class="nav-links d-block"><i class="fa fa-home pr-2"></i> Facturas</a>
+                    </li>
+                </ul>
+            </div>
+           
+                <div class="icons d-flex flex-column align-items-center">
+                    
+                </div>
+            </div>
+        </div>
+        <div class="main-body-content w-100 ets-pt " >
+
+
+
+            <div class="table-responsive bg-light">
+                <center>
+                    <table class="tabla">
+                        <div class="col-sm-3">
+                            <div class="well">
+                                <tr>
+                                    <td>
+                                        <h2 class="text-warning">BIENVENIDO ADMINISTRADOR</h2>
+                                        <span class="label label-success">Elija alguno de los items para gestionamiento</span>
+                                        
+                                </tr>
+                                </td>
+                                </tr>
+
+                    </table>
+                </center>
+
+            </div>
+            <div id="menu1" style="display:none"> 
+              <div class="btn-toolbar">
+    <button class="btn btn-primary">Crear nuevo</button>
+    
+</div>
+<div class="well">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>ID Usuario</th>
+          <th>Primer nombre</th>
+          <th>Segundo nombre</th>
+          <th>Primer Apellido</th>
+          <th>Segundo Apellido</th>
+          <th>Telefono</th>
+          <th>Clave</th>
+          <th>Correo</th>
+          <th>Tipo de usuario</th>
+
+          <th style="width: 36px;"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>Arturo</td>
+          <td>Andres</td>
+          <td>Vidal</td>
+          <td>Benetti</td>
+          <td>314231567</td>
+          <td>king45</td>
+          <td>kingat32@gmail.com</td>
+          <td>Mesero</td>
+          
+          <td>
+              <a href="user.html"><i class="icon-pencil"></i></a>
+              <a href="#myModal" role="button" data-toggle="modal"><i class="icon-remove"></i></a>
+          </td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Lorena</td>
+          <td>Giselt</td>
+          <td>Gameiro</td>
+          <td>Castro</td>
+          <td>3155678905</td>
+          <td>lili3312</td>
+          <td>lord23@gmail.com</td>
+          <td>Mesera</td>
+          <td>
+              <a href="user.html"><i class="icon-pencil"></i></a>
+              <a href="#myModal" role="button" data-toggle="modal"><i class="icon-remove"></i></a>
+          </td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>lina</td>
+          <td>Paola</td>
+          <td>Ticora</td>
+          <td>Ramirez</td>
+          <td>311478954</td>
+          <td>lina123</td>
+          <td>linapao@hotmail.com</td>
+          <td>Cajera</td>
+          <td>
+              <a href="user.html"><i class="icon-pencil"></i></a>
+              <a href="#myModal" role="button" data-toggle="modal"><i class="icon-remove"></i></a>
+          </td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>Sergio</td>
+          <td>Fernando</td>
+          <td>Pulgar</td>
+          <td>Autista</td>
+          <td>312342357</td>
+          <td>rick3215</td>
+          <td>serfo65@hotmail.com</td>
+          <td>Cajero</td>
+          <td>
+              <a href="user.html"><i class="icon-pencil"></i></a>
+              <a href="#myModal" role="button" data-toggle="modal"><i class="icon-remove"></i></a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+</div>
+<button onclick="ocultar();">Ocultar</button>
+<div class="modal small hide fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h3 id="myModalLabel">Delete Confirmation</h3>
+    </div>
+    <div class="modal-body">
+        <p class="error-text">Are you sure you want to delete the user?</p>
+    </div>
+    <div class="modal-footer">
+        <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+        <button class="btn btn-danger" data-dismiss="modal">Delete</button>
+    </div>
+    
+</div>
+                          
+            </div><br>
+            <div id="menu2" style="display:none"> 
+             <div class="btn-toolbar">
+    <button class="btn btn-primary">Crear nuevo</button>
+    
+</div>
+<div class="well">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>ID Producto</th>
+          <th>nombre Producto</th>
+          <th>Precio</th>
+         
+
+          <th style="width: 36px;"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>Cerveza Poker</td>
+          <td>$2.500</td>
+        
+          
+          <td>
+              <a href="user.html"><i class="icon-pencil"></i></a>
+              <a href="#myModal" role="button" data-toggle="modal"><i class="icon-remove"></i></a>
+          </td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Cerveza Aguila</td>
+          <td>$2.200</td>
+        
+          <td>
+              <a href="user.html"><i class="icon-pencil"></i></a>
+              <a href="#myModal" role="button" data-toggle="modal"><i class="icon-remove"></i></a>
+          </td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>Cerveza Costeña</td>
+          <td>$2.200</td>
+          <td>
+              <a href="user.html"><i class="icon-pencil"></i></a>
+              <a href="#myModal" role="button" data-toggle="modal"><i class="icon-remove"></i></a>
+          </td>
+        </tr>
+        <tr>
+           <td>4</td>
+          <td>Plato de alitas BBQ</td>
+          <td>$30.000</td>
+        
+          <td>
+              <a href="user.html"><i class="icon-pencil"></i></a>
+              <a href="#myModal" role="button" data-toggle="modal"><i class="icon-remove"></i></a>
+          </td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td>Papas fritas</td>
+          <td>$8.000</td>
+        
+          <td>
+              <a href="user.html"><i class="icon-pencil"></i></a>
+              <a href="#myModal" role="button" data-toggle="modal"><i class="icon-remove"></i></a>
+          </td>
+        </tr>
+        <tr>
+         <td>6</td>
+          <td>Coctel</td>
+          <td>9.000</td>
+      
+              <a href="user.html"><i class="icon-pencil"></i></a>
+              <a href="#myModal" role="button" data-toggle="modal"><i class="icon-remove"></i></a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+</div>
+<button onclick="ocultar2();">Ocultar</button>
+<div class="modal small hide fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h3 id="myModalLabel">Delete Confirmation</h3>
+    </div>
+    <div class="modal-body">
+        <p class="error-text">Are you sure you want to delete the user?</p>
+    </div>
+    <div class="modal-footer">
+        <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+        <button class="btn btn-danger" data-dismiss="modal">Delete</button>
+    </div>
+    
+</div>
+            </div><br>
+            <div id="menu3" style="display:none"> 
+              <div class="btn-toolbar">
+    <button class="btn btn-primary">Crear nuevo</button>
+    
+</div>
+<div class="well">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>ID insumo</th>
+          <th>nombre insumo</th>
+          <th>detalle insumo</th>
+          <th>Usuario creador</th>
+        
+
+          <th style="width: 36px;"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>Jabon</td>
+          <td>Para limpiar</td>
+          <td>Arturo</td>
+         
+          
+          <td>
+              <a href="user.html"><i class="icon-pencil"></i></a>
+              <a href="#myModal" role="button" data-toggle="modal"><i class="icon-remove"></i></a>
+          </td>
+        </tr>
+        <tr>
+           <td></td>
+          <td>Salsamentaria</td>
+          <td>salsas para comidas</td>
+          <td>Arturo</td>
+          <td>
+              <a href="user.html"><i class="icon-pencil"></i></a>
+              <a href="#myModal" role="button" data-toggle="modal"><i class="icon-remove"></i></a>
+          </td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>Platos</td>
+          <td>Para comida</td>
+          <td>Arturo</td>
+              <a href="user.html"><i class="icon-pencil"></i></a>
+              <a href="#myModal" role="button" data-toggle="modal"><i class="icon-remove"></i></a>
+          </td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>Vasos</td>
+          <td>Para cerveza</td>
+          <td>Arturo</td>
+              <a href="user.html"><i class="icon-pencil"></i></a>
+              <a href="#myModal" role="button" data-toggle="modal"><i class="icon-remove"></i></a>
+          </td>
+       
+       
+      </tbody>
+    </table>
+</div>
+<button onclick="ocultar3();">Ocultar</button>
+<div class="modal small hide fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h3 id="myModalLabel">Delete Confirmation</h3>
+    </div>
+    <div class="modal-body">
+        <p class="error-text">Are you sure you want to delete the user?</p>
+    </div>
+    <div class="modal-footer">
+        <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+        <button class="btn btn-danger" data-dismiss="modal">Delete</button>
+    </div>
+    
+</div>
+            </div><br>
+            <div id="menu4" style="display:none"> 
+                <div class="btn-toolbar">
+    <button class="btn btn-primary">Crear nuevo</button>
+    
+</div>
+<div class="well">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>ID Usuario</th>
+          <th>Primer nombre</th>
+          <th>Segundo nombre</th>
+          <th>Primer Apellido</th>
+          <th>Segundo Apellido</th>
+          <th>Telefono</th>
+          <th>Clave</th>
+          <th>Correo</th>
+          <th>Tipo de usuario</th>
+
+          <th style="width: 36px;"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>Maria</td>
+          <td>Angela</td>
+          <td>Mendoza</td>
+          <td>Gutierrez</td>
+          <td>312564879</td>
+          <td>magm</td>
+          <td>Mendoza@hotmail.com</td>
+          <td>Cajero</td>
+          
+          <td>
+              <a href="user.html"><i class="icon-pencil"></i></a>
+              <a href="#myModal" role="button" data-toggle="modal"><i class="icon-remove"></i></a>
+          </td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Carlos</td>
+          <td>Eduardo</td>
+          <td>Mendoza</td>
+          <td>Gutierrez</td>
+          <td>312564879</td>
+          <td>magm</td>
+          <td>Mendoza@hotmail.com</td>
+          <td>Cajero</td>
+          <td>
+              <a href="user.html"><i class="icon-pencil"></i></a>
+              <a href="#myModal" role="button" data-toggle="modal"><i class="icon-remove"></i></a>
+          </td>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>Maria</td>
+          <td>Angela</td>
+          <td>Mendoza</td>
+          <td>Gutierrez</td>
+          <td>312564879</td>
+          <td>magm</td>
+          <td>Mendoza@hotmail.com</td>
+          <td>Cajero</td>
+          <td>
+              <a href="user.html"><i class="icon-pencil"></i></a>
+              <a href="#myModal" role="button" data-toggle="modal"><i class="icon-remove"></i></a>
+          </td>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>Maria</td>
+          <td>Angela</td>
+          <td>Mendoza</td>
+          <td>Gutierrez</td>
+          <td>312564879</td>
+          <td>magm</td>
+          <td>Mendoza@hotmail.com</td>
+          <td>Cajero</td>
+          <td>
+              <a href="user.html"><i class="icon-pencil"></i></a>
+              <a href="#myModal" role="button" data-toggle="modal"><i class="icon-remove"></i></a>
+          </td>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>Maria</td>
+          <td>Angela</td>
+          <td>Mendoza</td>
+          <td>Gutierrez</td>
+          <td>312564879</td>
+          <td>magm</td>
+          <td>Mendoza@hotmail.com</td>
+          <td>Cajero</td>
+          <td>
+              <a href="user.html"><i class="icon-pencil"></i></a>
+              <a href="#myModal" role="button" data-toggle="modal"><i class="icon-remove"></i></a>
+          </td>
+        </tr>
+        <tr>
+         <td>1</td>
+          <td>Maria</td>
+          <td>Angela</td>
+          <td>Mendoza</td>
+          <td>Gutierrez</td>
+          <td>312564879</td>
+          <td>magm</td>
+          <td>Mendoza@hotmail.com</td>
+          <td>Cajero</td>
+          <td>
+              <a href="user.html"><i class="icon-pencil"></i></a>
+              <a href="#myModal" role="button" data-toggle="modal"><i class="icon-remove"></i></a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+</div>
+<button onclick="ocultar4();">Ocultar</button>
+<div class="modal small hide fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h3 id="myModalLabel">Delete Confirmation</h3>
+    </div>
+    <div class="modal-body">
+        <p class="error-text">Are you sure you want to delete the user?</p>
+    </div>
+    <div class="modal-footer">
+        <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+        <button class="btn btn-danger" data-dismiss="modal">Delete</button>
+    </div>
+    
+</div>
+
+            </div>
+            
+                 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.4/TweenMax.min.js">
+            </script>
+                <script src="https://unpkg.com/splitting@1.0.5/dist/splitting.js"></script>
+                <script>
+                    Splitting();
+                </script>
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+
+
+    </script>
+</body>
+
+</html>

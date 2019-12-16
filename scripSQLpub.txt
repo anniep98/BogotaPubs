@@ -1,0 +1,102 @@
+DDL
+
+create database Pub;
+
+use Pub;
+
+create table Rol (
+id integer not null primary key,
+tipo_usu varchar(50) not null); 
+----------------------------------
+-----------------------------------
+create table cliente(
+id integer not null AUTO_INCREMENT primary key,
+nom_cliente varchar (50) not null,
+ape_cliente varchar(50) not null,
+correo_usu varchar(50) not null,
+telefono integer ,
+usuario varchar(50) not null,
+clave varchar(100) not null
+);
+
+------------------------------------------
+--------------------------------------
+
+create table insumos(
+id integer not null primary key,
+insumo varchar(50) not null,
+detalle varchar(100) not null,
+insum_id integer,
+foreign key (insum_id) references cliente(id)
+);
+-----------------------------------------------
+---------------------------------------------------
+create table Detalle(
+id integer not null primary key,
+cantidad integer not null,
+producto_id int);
+--------------------
+---------------------------------------------------------
+create table producto(
+id integer not null primary key,
+nom_producto varchar(50) not null,
+precio integer not null,
+product_id integer,
+foreign key (product_id) references Detalle(id));
+--------------------------
+------------------------------------------------------
+create table Empleado(
+DOC int not null primary key,
+nom_usu varchar(50) not null,
+nom2_usu varchar(50)  null,
+ape_usu varchar(50) not null,
+ape2_usu varchar(50)  null,
+tel_usu int,
+clave varchar(50) not null,
+correo_usu varchar(50),
+usu_id int);
+----------------------------------------------
+create table reserva_mesa
+(
+id int not null primary key,
+mesa int not null,
+fecha date not null,
+cliente_id int,
+foreign key(cliente_id) references cliente(id)
+); 
+---------------------
+CREATE TABLE factura(
+    id INT PRIMARY KEY NOT NULL,
+    fecha DATE NOT NULL,
+    cantidad INT NOT NULL,
+    empleado_id INT,
+    cliente_id INT,
+    Detalle_id INT,
+    FOREIGN KEY(empleado_id) REFERENCES empleado(DOC),
+    FOREIGN KEY(cliente_id) REFERENCES cliente(id),
+    FOREIGN KEY(Detalle_id) REFERENCES Detalle(id)
+);
+
+-------------------------------------
+DML
+SELECT * FROM `Rol`
+
+SELECT * FROM `cliente`
+
+SELECT * FROM `insumos`
+
+SELECT * FROM `Detalle`
+
+SELECT * FROM `producto`
+
+SELECT * FROM `Empleado`
+
+SELECT * FROM `reserva_mesa`
+
+SELECT * FROM `factura`
+
+
+UPDATE `Empleado` SET `nom2_usu` = 'maria' WHERE `Empleado`.`DOC` = 69;
+
+
+
